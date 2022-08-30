@@ -2,16 +2,15 @@
 
 namespace Kangangga\Bpjs;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Kangangga\Bpjs\Api\Pcare;
-use Kangangga\Bpjs\Api\Utils;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Traits\Macroable;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
+use Illuminate\Support\Traits\Macroable;
 use Kangangga\Bpjs\Api\Antrean;
 use Kangangga\Bpjs\Api\Apotek;
+use Kangangga\Bpjs\Api\Pcare;
 use Kangangga\Bpjs\Api\VClaim;
 
 class Bpjs
@@ -37,7 +36,7 @@ class Bpjs
     {
         $object = $this->app->make($abstract);
 
-        $alias = "bpjs-" . Str::lower(class_basename($abstract));
+        $alias = 'bpjs-'.Str::lower(class_basename($abstract));
         $config = Config::get(Str::replace('-', '.', $alias));
 
         if ($aliases) {
@@ -49,7 +48,6 @@ class Bpjs
         }
 
         if (property_exists($object, 'request')) {
-
             $object->request->setBaseUrl(Arr::get($config, 'base_url'));
 
             $object->request->setUsername(

@@ -2,7 +2,6 @@
 
 namespace Kangangga\Bpjs\Api;
 
-
 class Pcare extends BaseApi
 {
     public function kesadaran()

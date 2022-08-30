@@ -3,9 +3,9 @@
 namespace Kangangga\Bpjs\Api;
 
 use Arr;
-use LZCompressor\LZString;
 use Illuminate\Http\Client\Response as Result;
 use Illuminate\Support\Traits\Macroable;
+use LZCompressor\LZString;
 
 class Response
 {
@@ -121,6 +121,7 @@ class Response
         $key_hash = hex2bin(hash('sha256', $key));
         $iv = substr(hex2bin(hash('sha256', $key)), 0, 16);
         $output = openssl_decrypt(base64_decode($string), Utils::ENCRYPT_METHOD, $key_hash, OPENSSL_RAW_DATA, $iv);
+
         return $output;
     }
 }

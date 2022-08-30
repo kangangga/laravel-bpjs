@@ -2,11 +2,7 @@
 
 namespace Kangangga\Bpjs\Api;
 
-use \Illuminate\Http\Client\Factory;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\PendingRequest;
-use LZCompressor\LZString;
-
 
 class Request
 {
@@ -34,7 +30,6 @@ class Request
 
     protected $authorization;
 
-
     public function __construct(Utils $utils)
     {
         $this->utils = $utils;
@@ -44,19 +39,24 @@ class Request
     {
         $headers = collect([]);
 
-        if (isset($this->consumer_id))
+        if (isset($this->consumer_id)) {
             $headers->put('X-cons-id', $this->consumer_id);
-        if (isset($this->signature))
+        }
+        if (isset($this->signature)) {
             $headers->put('X-signature', $this->signature);
+        }
 
-        if (isset($this->timestamp))
+        if (isset($this->timestamp)) {
             $headers->put('X-timestamp', $this->timestamp);
+        }
 
-        if (isset($this->authorization))
+        if (isset($this->authorization)) {
             $headers->put('X-authorization', "Basic {$this->authorization}");
+        }
 
-        if (isset($this->user_key))
+        if (isset($this->user_key)) {
             $headers->put('user_key', $this->user_key);
+        }
 
         $headers->merge($otherHeaders);
 
@@ -224,6 +224,6 @@ class Request
 
     public function getKey()
     {
-        return $this->getConsumerId() . $this->getSecretKey() . $this->getTimestamp();
+        return $this->getConsumerId().$this->getSecretKey().$this->getTimestamp();
     }
 }
