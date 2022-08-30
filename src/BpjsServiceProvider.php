@@ -2,14 +2,12 @@
 
 namespace Kangangga\Bpjs;
 
-use Config;
-use Kangangga\Bpjs\Bpjs;
-use Kangangga\Bpjs\Api\Utils;
+use Illuminate\Contracts\Foundation\Application;
 use Kangangga\Bpjs\Api\BaseApi;
 use Kangangga\Bpjs\Api\Request;
-use Spatie\LaravelPackageTools\Package;
+use Kangangga\Bpjs\Api\Utils;
 use Kangangga\Bpjs\Commands\BpjsCommand;
-use Illuminate\Contracts\Foundation\Application;
+use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class BpjsServiceProvider extends PackageServiceProvider
