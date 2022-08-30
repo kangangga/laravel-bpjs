@@ -3,12 +3,13 @@
 namespace Kangangga\Bpjs;
 
 use Config;
+use Kangangga\Bpjs\Bpjs;
+use Kangangga\Bpjs\Api\Utils;
 use Kangangga\Bpjs\Api\BaseApi;
 use Kangangga\Bpjs\Api\Request;
 use Spatie\LaravelPackageTools\Package;
 use Kangangga\Bpjs\Commands\BpjsCommand;
 use Illuminate\Contracts\Foundation\Application;
-use Kangangga\Bpjs\Api\Utils;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class BpjsServiceProvider extends PackageServiceProvider
@@ -39,7 +40,7 @@ class BpjsServiceProvider extends PackageServiceProvider
         });
 
         $this->app->singleton('bpjs', function (Application $app) {
-            return new \Kangangga\Bpjs\Bpjs($app);
+            return new Bpjs($app);
         });
     }
 

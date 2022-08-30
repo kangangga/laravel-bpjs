@@ -36,11 +36,6 @@ class Utils
         return LZString::decompressFromEncodedURIComponent($value);
     }
 
-    public static function keyString($consumer_id, $secret_key)
-    {
-        return $consumer_id . $secret_key . $this->getTimestamp();
-    }
-
     public static function keyHash($key)
     {
         return hex2bin(hash('sha256', $key));
