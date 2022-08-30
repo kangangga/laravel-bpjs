@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Database\Factories;
+namespace Kangangga\Bpjs\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

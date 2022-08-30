@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Kangangga\Bpjs\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class BpjsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-bpjs';
 
     public $description = 'My command';
 
