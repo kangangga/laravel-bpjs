@@ -6,18 +6,21 @@ class Pcare extends BaseApi
 {
     /**
      * @var \Kangangga\Bpjs\ApiMixin\PcareMCU
+     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/mcu
      */
     public \Kangangga\Bpjs\ApiMixin\PcareMCU $mcu;
 
     /**
      * @var \Kangangga\Bpjs\ApiMixin\PcareKelompok
+     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/kelompok
      */
     public \Kangangga\Bpjs\ApiMixin\PcareKelompok $kelompok;
 
     /**
      * @var \Kangangga\Bpjs\ApiMixin\PcareKunjungan
+     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/kunjungan
      */
     public \Kangangga\Bpjs\ApiMixin\PcareKunjungan $kunjungan;
@@ -25,15 +28,15 @@ class Pcare extends BaseApi
     public $extends = [
         'mcu' => \Kangangga\Bpjs\ApiMixin\PcareMCU::class,
         'kelompok' => \Kangangga\Bpjs\ApiMixin\PcareKelompok::class,
-        'kunjungan' => \Kangangga\Bpjs\ApiMixin\PcareKunjungan::class
+        'kunjungan' => \Kangangga\Bpjs\ApiMixin\PcareKunjungan::class,
     ];
 
     /**
      * Fungsi : Get Data Diagnosa
      *
-     * @param string $search Kode atau nama diagnosa
-     * @param integer $page Row data awal yang akan ditampilkan
-     * @param integer $limit Limit jumlah data yang akan ditampilkan
+     * @param  string  $search Kode atau nama diagnosa
+     * @param  int  $page Row data awal yang akan ditampilkan
+     * @param  int  $limit Limit jumlah data yang akan ditampilkan
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function diagnosa($search, $page = 1, $limit = 100)
@@ -46,8 +49,8 @@ class Pcare extends BaseApi
     /**
      * Fungsi : Get Data Dokter
      *
-     * @param integer $page Row data awal yang akan ditampilkan
-     * @param integer $limit Limit jumlah data yang akan ditampilkan
+     * @param  int  $page Row data awal yang akan ditampilkan
+     * @param  int  $limit Limit jumlah data yang akan ditampilkan
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function dokter($page = 1, $limit = 100)

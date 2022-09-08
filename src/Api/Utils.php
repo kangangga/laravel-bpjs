@@ -27,6 +27,7 @@ class Utils
     {
         date_default_timezone_set('UTC');
         $date = now();
+
         return strval(
             $date->getTimestamp() - strtotime($date->make('1970-01-01 00:00:00')->format('Y-m-d H:i:s'))
         );

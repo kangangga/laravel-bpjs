@@ -2,11 +2,9 @@
 
 namespace Kangangga\Bpjs\Api;
 
-use BadMethodCallException;
-use Kangangga\Bpjs\Bpjs;
 use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Http\Client\Request as BaseRequest;
 use Illuminate\Support\Facades\Validator;
+use Kangangga\Bpjs\Bpjs;
 
 /** @mixin \Illuminate\Http\Client\PendingRequest */
 class Request
@@ -229,7 +227,7 @@ class Request
 
     public function getKey()
     {
-        return $this->getConsumerId() . $this->getSecretKey() . $this->getTimestamp();
+        return $this->getConsumerId().$this->getSecretKey().$this->getTimestamp();
     }
 
     /**
@@ -247,7 +245,7 @@ class Request
             throw new \Illuminate\Validation\ValidationException(
                 $validator,
                 response()->json([
-                    'errors' => $validator->errors()
+                    'errors' => $validator->errors(),
                 ])
             );
         }
@@ -261,8 +259,7 @@ class Request
             return $this->http->$method(...$parameters);
         }
 
-
-        if (!method_exists($this, $method)) {
+        if (! method_exists($this, $method)) {
             throw new \BadMethodCallException(sprintf(
                 'Method %s::%s does not exist.',
                 static::class,

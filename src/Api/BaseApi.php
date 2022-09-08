@@ -15,7 +15,6 @@ abstract class BaseApi
     /** @var Request|PendingRequest */
     public Request $request;
 
-
     public PendingRequest $http;
 
     public function __construct(Request $request)

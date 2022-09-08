@@ -3,7 +3,6 @@
 namespace Kangangga\Bpjs;
 
 use Psr\Log\LoggerInterface;
-use Illuminate\Log\LogManager as BaseLogManager;
 
 class LogManager implements LoggerInterface
 {

@@ -23,7 +23,7 @@ return [
             'secret_key' => env('BPJS_SECRET_KEY'),
             'consumer_id' => env('BPJS_CONSUMER_ID'),
         ],
-        'options' => []
+        'options' => [],
     ],
 
     'antrean' => [
@@ -55,10 +55,10 @@ return [
             \Kangangga\Bpjs\Listeners\BpjsRequestSending::class,
         ],
         \Illuminate\Http\Client\Events\ResponseReceived::class => [
-            \Kangangga\Bpjs\Listeners\BpjsResponseReceived::class
+            \Kangangga\Bpjs\Listeners\BpjsResponseReceived::class,
         ],
         \Illuminate\Http\Client\Events\ConnectionFailed::class => [
-            \Kangangga\Bpjs\Listeners\BpjsConnectionFailed::class
+            \Kangangga\Bpjs\Listeners\BpjsConnectionFailed::class,
         ],
-    ]
+    ],
 ];
