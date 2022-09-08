@@ -2,12 +2,13 @@
 
 namespace Kangangga\Bpjs;
 
-use Illuminate\Contracts\Foundation\Application;
+use Kangangga\Bpjs\Api\Utils;
 use Kangangga\Bpjs\Api\BaseApi;
 use Kangangga\Bpjs\Api\Request;
-use Kangangga\Bpjs\Api\Utils;
-use Kangangga\Bpjs\Commands\BpjsCommand;
+use Illuminate\Support\ServiceProvider;
 use Spatie\LaravelPackageTools\Package;
+use Kangangga\Bpjs\Commands\BpjsCommand;
+use Illuminate\Contracts\Foundation\Application;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class BpjsServiceProvider extends PackageServiceProvider
@@ -29,6 +30,8 @@ class BpjsServiceProvider extends PackageServiceProvider
 
     public function registeringPackage()
     {
+        $this->app->register(BpjsEventServiceProvider::class);
+
         $this->app->bind(Request::class, function (Application $app) {
             return new Request($app->make(Utils::class));
         });
@@ -39,6 +42,10 @@ class BpjsServiceProvider extends PackageServiceProvider
 
         $this->app->singleton('bpjs', function (Application $app) {
             return new Bpjs($app);
+        });
+
+        $this->app->singleton('bpjs-log', function ($app) {
+            return new LogManager($app);
         });
     }
 

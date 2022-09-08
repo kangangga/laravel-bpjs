@@ -5,7 +5,6 @@ namespace Kangangga\Bpjs\Api;
 use Arr;
 use Illuminate\Http\Client\Response as Result;
 use Illuminate\Support\Traits\Macroable;
-use LZCompressor\LZString;
 
 class Response
 {
@@ -23,15 +22,20 @@ class Response
 
     protected ?array $response;
 
-    public function __construct(Result $result, Request $request)
+    public function __construct(Result $result, Request $request, $validator)
     {
         $this->request = $request;
-        $this->result = $result->json();
+
+        $this->result = $result;
         $this->data = Arr::get($this->result, 'metaData');
         $this->code = Arr::get($this->data, 'code');
         $this->message = Arr::get($this->data, 'message');
+        $this->parseResponse(Arr::get($this->result, 'response'));
 
-        $this->parseResponse();
+        // Reset timezone
+        date_default_timezone_set(
+            config('app.timezone', 'Asia/Jakarta')
+        );
     }
 
     public function collect()
@@ -101,27 +105,12 @@ class Response
         return $this->request;
     }
 
-    private function parseResponse()
+    private function parseResponse($response)
     {
-        $object = json_decode(
-            LZString::decompressFromEncodedURIComponent(
-                $this->stringDecrypt(
-                    $this->request->getKey(),
-                    Arr::get($this->result, 'response')
-                )
-            ),
-            true
-        );
-
-        $this->response = $object;
-    }
-
-    private function stringDecrypt($key, $string)
-    {
-        $key_hash = hex2bin(hash('sha256', $key));
-        $iv = substr(hex2bin(hash('sha256', $key)), 0, 16);
-        $output = openssl_decrypt(base64_decode($string), Utils::ENCRYPT_METHOD, $key_hash, OPENSSL_RAW_DATA, $iv);
-
-        return $output;
+        if (is_array($response)) {
+            $this->response = $response;
+        } else {
+            $this->response = Utils::decodeResponse($response);
+        }
     }
 }

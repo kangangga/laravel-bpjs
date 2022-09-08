@@ -2,8 +2,13 @@
 
 namespace Kangangga\Bpjs\Api;
 
+use BadMethodCallException;
+use Kangangga\Bpjs\Bpjs;
 use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Request as BaseRequest;
+use Illuminate\Support\Facades\Validator;
 
+/** @mixin \Illuminate\Http\Client\PendingRequest */
 class Request
 {
     public Utils $utils;
@@ -63,7 +68,7 @@ class Request
         return $headers->toArray();
     }
 
-    public function init($http)
+    public function init(PendingRequest $http, Bpjs $bpjs)
     {
         $this->timestamp = $this->utils->getTimestamp();
 
@@ -224,6 +229,45 @@ class Request
 
     public function getKey()
     {
-        return $this->getConsumerId().$this->getSecretKey().$this->getTimestamp();
+        return $this->getConsumerId() . $this->getSecretKey() . $this->getTimestamp();
+    }
+
+    /**
+     * Run the validator's rules against its data.
+     *
+     * @return \Illuminate\Http\Client\PendingRequest
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function validate($data, $rules, $messages = [], $customAttributes = [])
+    {
+        $validator = Validator::make($data, $rules, $messages, $customAttributes);
+
+        if ($validator->fails()) {
+            throw new \Illuminate\Validation\ValidationException(
+                $validator,
+                response()->json([
+                    'errors' => $validator->errors()
+                ])
+            );
+        }
+
+        return $validator->valid();
+    }
+
+    public function __call($method, $parameters)
+    {
+        if (method_exists($this->http, $method)) {
+            return $this->http->$method(...$parameters);
+        }
+
+
+        if (!method_exists($this, $method)) {
+            throw new \BadMethodCallException(sprintf(
+                'Method %s::%s does not exist.',
+                static::class,
+                $method
+            ));
+        }
     }
 }

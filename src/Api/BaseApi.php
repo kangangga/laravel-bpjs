@@ -2,6 +2,7 @@
 
 namespace Kangangga\Bpjs\Api;
 
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Support\Traits\Macroable;
 
@@ -9,7 +10,13 @@ abstract class BaseApi
 {
     use Macroable;
 
+    public $extends;
+
+    /** @var Request|PendingRequest */
     public Request $request;
+
+
+    public PendingRequest $http;
 
     public function __construct(Request $request)
     {
@@ -24,8 +31,13 @@ abstract class BaseApi
     {
     }
 
-    public function response($result): Response
+    public function response($result, $validator = null): Response
     {
-        return new Response($result, $this->request);
+        return new Response($result, $this->request, $validator);
+    }
+
+    public function extends()
+    {
+        return $this->extends;
     }
 }
