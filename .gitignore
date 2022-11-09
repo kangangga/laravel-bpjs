@@ -1,9 +1,10 @@
 .idea
 .phpunit.result.cache
+.temp
+.cache
 build
 composer.lock
 coverage
-docs
 phpunit.xml
 phpstan.neon
 testbench.yaml

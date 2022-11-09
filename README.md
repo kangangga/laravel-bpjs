@@ -1,4 +1,3 @@
-
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
 
 # This is my package laravel-bpjs
@@ -79,8 +78,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Angga Saputra](https://github.com/kangangga)
-- [All Contributors](../../contributors)
+-   [Angga Saputra](https://github.com/kangangga)
+-   [All Contributors](../../contributors)
 
 ## License
 
