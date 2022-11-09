@@ -4,7 +4,7 @@ namespace Kangangga\Bpjs\ApiMixin;
 
 use Kangangga\Bpjs\Api\BaseApi;
 
-class PcareSpesialis  extends BaseApi
+class PcareSpesialis extends BaseApi
 {
     /**
      * Fungsi : Get Data spesialis
@@ -14,13 +14,14 @@ class PcareSpesialis  extends BaseApi
     public function get()
     {
         return $this->response(
-            $this->request->get("/spesialis")
+            $this->request->get('/spesialis')
         );
     }
 
     /**
      * Fungsi : Get Data subspesialis
-     * @param string $kode_spesialis Kode Spesialis
+     *
+     * @param  string  $kode_spesialis Kode Spesialis
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function subspesialis($kode_spesialis)
@@ -32,12 +33,13 @@ class PcareSpesialis  extends BaseApi
 
     /**
      * Fungsi : Get Data sarana
+     *
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function sarana()
     {
         return $this->response(
-            $this->request->get("/spesialis/sarana")
+            $this->request->get('/spesialis/sarana')
         );
     }
 }

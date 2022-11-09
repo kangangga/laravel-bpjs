@@ -2,9 +2,9 @@
 
 namespace Kangangga\Bpjs\Api;
 
+use Illuminate\Http\Client\Response as Result;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Traits\Macroable;
-use Illuminate\Http\Client\Response as Result;
 
 class Response
 {
@@ -62,7 +62,6 @@ class Response
         $data = collect(
             Arr::get($this->response, 'list', [])
         )->filter(function ($item) use ($key, $value) {
-
             if (is_array($key)) {
                 return collect($key)->every(function ($k) use ($value, $item) {
                     return \Str::startsWith($item[$k], $value);

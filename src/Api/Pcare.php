@@ -6,24 +6,28 @@ class Pcare extends BaseApi
 {
     /**
      * @var \Kangangga\Bpjs\ApiMixin\PcareMCU
+     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/mcu
      */
     public \Kangangga\Bpjs\ApiMixin\PcareMCU $mcu;
 
     /**
      * @var \Kangangga\Bpjs\ApiMixin\PcareKelompok
+     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/kelompok
      */
     public \Kangangga\Bpjs\ApiMixin\PcareKelompok $kelompok;
 
     /**
      * @var \Kangangga\Bpjs\ApiMixin\PcareKunjungan
+     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/kunjungan
      */
     public \Kangangga\Bpjs\ApiMixin\PcareKunjungan $kunjungan;
 
     /**
      * @var \Kangangga\Bpjs\ApiMixin\PcareSpesialis
+     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/spesialis
      */
     public \Kangangga\Bpjs\ApiMixin\PcareSpesialis $spesialis;
@@ -78,6 +82,7 @@ class Pcare extends BaseApi
 
     /**
      * Fungsi : Get Data poli
+     *
      * @param  int  $limit Limit jumlah data yang akan ditampilkan
      * @param  int  $offset Row data awal yang akan ditampilkan
      * @return \Kangangga\Bpjs\Api\Response
@@ -91,6 +96,7 @@ class Pcare extends BaseApi
 
     /**
      * Fungsi : Get Data provider
+     *
      * @param  int  $limit Limit jumlah data yang akan ditampilkan
      * @param  int  $offset Row data awal yang akan ditampilkan
      * @return \Kangangga\Bpjs\Api\Response

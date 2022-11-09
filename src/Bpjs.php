@@ -2,21 +2,21 @@
 
 namespace Kangangga\Bpjs;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use GuzzleHttp\HandlerStack;
-use Kangangga\Bpjs\Api\Pcare;
-use Kangangga\Bpjs\Api\Utils;
-use Kangangga\Bpjs\Api\Apotek;
-use Kangangga\Bpjs\Api\VClaim;
-use Kangangga\Bpjs\Api\Antrean;
-use Kangangga\Bpjs\Api\BaseApi;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
+use Kangangga\Bpjs\Api\Antrean;
+use Kangangga\Bpjs\Api\Apotek;
+use Kangangga\Bpjs\Api\BaseApi;
+use Kangangga\Bpjs\Api\Pcare;
+use Kangangga\Bpjs\Api\Utils;
+use Kangangga\Bpjs\Api\VClaim;
 use Kevinrob\GuzzleCache\CacheMiddleware;
-use Illuminate\Contracts\Foundation\Application;
 use Kevinrob\GuzzleCache\Storage\LaravelCacheStorage;
 use Kevinrob\GuzzleCache\Strategy\PrivateCacheStrategy;
 
@@ -89,7 +89,7 @@ class Bpjs
                         )
                     )
                 ),
-                'bpjs-cache-' . Config::get('bpjs.default_auth.consumer_id')
+                'bpjs-cache-'.Config::get('bpjs.default_auth.consumer_id')
             );
         }
 
@@ -102,7 +102,7 @@ class Bpjs
         $this->api = $this->app->make($abstract);
 
         $this->config = Config::get(
-            'bpjs.' . Str::lower(class_basename($abstract))
+            'bpjs.'.Str::lower(class_basename($abstract))
         );
 
         if (method_exists($this->api, 'boot')) {
@@ -110,7 +110,6 @@ class Bpjs
         }
 
         if (property_exists($this->api, 'request')) {
-
             $this->initializationApi($this->api, $this->config);
 
             $http = Http::baseUrl(Arr::get($this->config, 'base_url'))->withOptions(
