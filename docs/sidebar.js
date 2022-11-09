@@ -18,5 +18,10 @@ export const sidebar = {
                 //
             ],
         },
+        {
+            text: "Github",
+
+            link: "https://github.com/kangangga/laravel-bpjs.git",
+        },
     ],
 };
