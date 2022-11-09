@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "repository": "https://github.com/kangangga/laravel-bpjs.git",
+    "homepage": "https://kangangga.github.io/laravel-bpjs",
     "author": "Angga Saputra <masangga.com@gmail.com>",
     "license": "MIT",
     "private": false,
