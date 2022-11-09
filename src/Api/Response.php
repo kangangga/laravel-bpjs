@@ -2,9 +2,9 @@
 
 namespace Kangangga\Bpjs\Api;
 
-use Arr;
-use Illuminate\Http\Client\Response as Result;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Traits\Macroable;
+use Illuminate\Http\Client\Response as Result;
 
 class Response
 {
@@ -55,6 +55,24 @@ class Response
     public function json()
     {
         return $this->collect()->toJson();
+    }
+
+    public function search(string $value, $key)
+    {
+        $data = collect(
+            Arr::get($this->response, 'list', [])
+        )->filter(function ($item) use ($key, $value) {
+
+            if (is_array($key)) {
+                return collect($key)->every(function ($k) use ($value, $item) {
+                    return \Str::startsWith($item[$k], $value);
+                });
+            }
+
+            return \Str::startsWith($item[$key], $value);
+        })->values();
+
+        return $data;
     }
 
     /**
@@ -110,7 +128,10 @@ class Response
         if (is_array($response)) {
             $this->response = $response;
         } else {
-            $this->response = Utils::decodeResponse($response);
+            $this->response = Utils::decodeResponse(
+                $this->request->getKey(),
+                $response
+            ) ?? [];
         }
     }
 }

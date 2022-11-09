@@ -2,18 +2,23 @@
 
 namespace Kangangga\Bpjs;
 
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
-use Illuminate\Support\Traits\Macroable;
-use Kangangga\Bpjs\Api\Antrean;
-use Kangangga\Bpjs\Api\Apotek;
-use Kangangga\Bpjs\Api\BaseApi;
+use GuzzleHttp\HandlerStack;
 use Kangangga\Bpjs\Api\Pcare;
 use Kangangga\Bpjs\Api\Utils;
+use Kangangga\Bpjs\Api\Apotek;
 use Kangangga\Bpjs\Api\VClaim;
+use Kangangga\Bpjs\Api\Antrean;
+use Kangangga\Bpjs\Api\BaseApi;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Traits\Macroable;
+use Kevinrob\GuzzleCache\CacheMiddleware;
+use Illuminate\Contracts\Foundation\Application;
+use Kevinrob\GuzzleCache\Storage\LaravelCacheStorage;
+use Kevinrob\GuzzleCache\Strategy\PrivateCacheStrategy;
 
 class Bpjs
 {
@@ -46,6 +51,11 @@ class Bpjs
         $this->app = $app;
     }
 
+    public static function make(): static
+    {
+        return new static(app());
+    }
+
     public function pcare(): Pcare
     {
         return $this->registerApi(Pcare::class);
@@ -66,13 +76,33 @@ class Bpjs
         return $this->registerApi(Apotek::class);
     }
 
+    public static function handlerStack()
+    {
+        $stack = HandlerStack::create();
+
+        if (Config::get('bpjs.cache') === CacheMiddleware::class) {
+            $stack->push(
+                new CacheMiddleware(
+                    new PrivateCacheStrategy(
+                        new LaravelCacheStorage(
+                            Cache::store()
+                        )
+                    )
+                ),
+                'bpjs-cache-' . Config::get('bpjs.default_auth.consumer_id')
+            );
+        }
+
+        return $stack;
+    }
+
     protected function registerApi($abstract, $parameters = [])
     {
         /** @var Pcare|VClaim|Antrean|Apotek|BaseApi */
         $this->api = $this->app->make($abstract);
 
         $this->config = Config::get(
-            'bpjs.'.Str::lower(class_basename($abstract))
+            'bpjs.' . Str::lower(class_basename($abstract))
         );
 
         if (method_exists($this->api, 'boot')) {
@@ -80,12 +110,16 @@ class Bpjs
         }
 
         if (property_exists($this->api, 'request')) {
+
             $this->initializationApi($this->api, $this->config);
 
             $http = Http::baseUrl(Arr::get($this->config, 'base_url'))->withOptions(
                 array_merge(
                     Config::get('bpjs.default_options', []),
                     Arr::get($this->config, 'options', []),
+                    [
+                        'handler' => self::handlerStack(),
+                    ]
                 ),
             );
 
