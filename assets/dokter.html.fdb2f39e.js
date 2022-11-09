@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-0793d731","path":"/pcare/dokter.html","title":"Dokter","lang":"id-ID","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1668033913000,"contributors":[{"name":"Angga Saputra","email":"masangga.com@gmail.com","commits":1}]},"filePathRelative":"pcare/dokter.md"}');export{t as data};
