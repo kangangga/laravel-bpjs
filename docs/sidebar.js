@@ -2,7 +2,7 @@ export const sidebar = {
     "/": [
         {
             text: "Guide",
-            collapsible: true,
+            collapsible: false,
             children: [
                 "/guide/installation.md",
                 "/guide/example.md",
