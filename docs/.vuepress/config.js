@@ -7,6 +7,7 @@ import { sidebar } from "../sidebar";
 const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({
+    base: "/laravel-bpjs/",
     lang: "id-ID",
     title: "Laravel BPJS",
     description: "Just playing around",
