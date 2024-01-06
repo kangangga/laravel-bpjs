@@ -5,29 +5,21 @@ namespace Kangangga\Bpjs\Api;
 class Pcare extends BaseApi
 {
     /**
-     * @var \Kangangga\Bpjs\ApiMixin\PcareMCU
-     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/mcu
      */
     public \Kangangga\Bpjs\ApiMixin\PcareMCU $mcu;
 
     /**
-     * @var \Kangangga\Bpjs\ApiMixin\PcareKelompok
-     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/kelompok
      */
     public \Kangangga\Bpjs\ApiMixin\PcareKelompok $kelompok;
 
     /**
-     * @var \Kangangga\Bpjs\ApiMixin\PcareKunjungan
-     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/kunjungan
      */
     public \Kangangga\Bpjs\ApiMixin\PcareKunjungan $kunjungan;
 
     /**
-     * @var \Kangangga\Bpjs\ApiMixin\PcareSpesialis
-     *
      * @see https://dvlp.bpjs-kesehatan.go.id:8888/trust-mark/main.html#/mitra/katalog/pcare/spesialis
      */
     public \Kangangga\Bpjs\ApiMixin\PcareSpesialis $spesialis;
