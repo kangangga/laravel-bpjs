@@ -9,7 +9,7 @@ class PcareKunjungan extends BaseApi
     /**
      * Fungsi : Get Data Rujukan
      *
-     * @param  string  $no_kunjungan Nomor Kunjungan
+     * @param  string  $no_kunjungan  Nomor Kunjungan
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function rujukan($no_kunjungan)
@@ -22,7 +22,7 @@ class PcareKunjungan extends BaseApi
     /**
      * Fungsi : Get Data Riwayat Kunjungan
      *
-     * @param  string  $no_kartu Nomor kartu peserta
+     * @param  string  $no_kartu  Nomor kartu peserta
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function peserta($no_kartu)
@@ -35,7 +35,7 @@ class PcareKunjungan extends BaseApi
     /**
      * Fungsi : Delete Data Kunjungan
      *
-     * @param  string  $no_kunjungan Nomor Kunjungan
+     * @param  string  $no_kunjungan  Nomor Kunjungan
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function deleteKunjungan($no_kunjungan)
@@ -49,7 +49,7 @@ class PcareKunjungan extends BaseApi
      * Fungsi : Edit Data Kunjungan
      *
      * @param  array  $data
-     * @param  string  $type hemodialisa atau spesialis
+     * @param  string  $type  hemodialisa atau spesialis
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function editKunjungan($data, $type = 'hemodialisa')
@@ -71,7 +71,7 @@ class PcareKunjungan extends BaseApi
      * Fungsi : Add Data Kunjungan
      *
      * @param  array  $data
-     * @param  string  $type hemodialisa atau spesialis
+     * @param  string  $type  hemodialisa atau spesialis
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function addKunjungan($data, $type = 'hemodialisa')

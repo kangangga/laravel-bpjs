@@ -34,9 +34,9 @@ class Pcare extends BaseApi
     /**
      * Fungsi : Get Data Diagnosa
      *
-     * @param  string  $search Kode atau nama diagnosa
-     * @param  int  $offset Row data awal yang akan ditampilkan
-     * @param  int  $limit Limit jumlah data yang akan ditampilkan
+     * @param  string  $search  Kode atau nama diagnosa
+     * @param  int  $offset  Row data awal yang akan ditampilkan
+     * @param  int  $limit  Limit jumlah data yang akan ditampilkan
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function diagnosa($search, $offset = 1, $limit = 100)
@@ -49,8 +49,8 @@ class Pcare extends BaseApi
     /**
      * Fungsi : Get Data Dokter
      *
-     * @param  int  $offset Row data awal yang akan ditampilkan
-     * @param  int  $limit Limit jumlah data yang akan ditampilkan
+     * @param  int  $offset  Row data awal yang akan ditampilkan
+     * @param  int  $limit  Limit jumlah data yang akan ditampilkan
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function dokter($offset = 1, $limit = 100)
@@ -75,8 +75,8 @@ class Pcare extends BaseApi
     /**
      * Fungsi : Get Data poli
      *
-     * @param  int  $limit Limit jumlah data yang akan ditampilkan
-     * @param  int  $offset Row data awal yang akan ditampilkan
+     * @param  int  $limit  Limit jumlah data yang akan ditampilkan
+     * @param  int  $offset  Row data awal yang akan ditampilkan
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function poli($limit = 100, $offset = 0)
@@ -89,8 +89,8 @@ class Pcare extends BaseApi
     /**
      * Fungsi : Get Data provider
      *
-     * @param  int  $limit Limit jumlah data yang akan ditampilkan
-     * @param  int  $offset Row data awal yang akan ditampilkan
+     * @param  int  $limit  Limit jumlah data yang akan ditampilkan
+     * @param  int  $offset  Row data awal yang akan ditampilkan
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function provider($limit = 100, $offset = 0)

@@ -9,7 +9,7 @@ class PcareKelompok extends BaseApi
     /**
      * Fungsi : Get Data Club Prolanis
      *
-     * @param  string  $search Kode Jenis Kelompok => 01 : Diabetes Melitus, 02 : Hipertensi
+     * @param  string  $search  Kode Jenis Kelompok => 01 : Diabetes Melitus, 02 : Hipertensi
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function club($search)
@@ -22,7 +22,7 @@ class PcareKelompok extends BaseApi
     /**
      * Fungsi : Get Data Kegiatan Kelompok
      *
-     * @param  string|\Illuminate\Support\Carbon  $date Bulan, format => dd-mm-yyyy
+     * @param  string|\Illuminate\Support\Carbon  $date  Bulan, format => dd-mm-yyyy
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function kegiatan($date)
@@ -39,7 +39,7 @@ class PcareKelompok extends BaseApi
     /**
      * Fungsi : Get Data Peserta Kegiatan Kelompok
      *
-     * @param  string  $edu_id eduId
+     * @param  string  $edu_id  eduId
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function peserta($edu_id)
@@ -99,7 +99,7 @@ class PcareKelompok extends BaseApi
     /**
      * Fungsi : Delete Data Kegiatan Kelompok
      *
-     * @param  string  $edu_id eduId
+     * @param  string  $edu_id  eduId
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function deleteKegiatan($edu_id)
@@ -112,8 +112,8 @@ class PcareKelompok extends BaseApi
     /**
      * Fungsi : Delete Data Peserta Kegiatan Kelompok
      *
-     * @param  string  $edu_id eduId
-     * @param  string  $no_kartu Nomor Kartu Peserta
+     * @param  string  $edu_id  eduId
+     * @param  string  $no_kartu  Nomor Kartu Peserta
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function deletePeserta($edu_id, $no_kartu)

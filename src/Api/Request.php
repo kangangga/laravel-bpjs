@@ -88,7 +88,7 @@ class Request
     /**
      * Set the value of token
      *
-     * @return  self
+     * @return self
      */
     public function setToken($token)
     {
@@ -108,7 +108,7 @@ class Request
     /**
      * Set the value of base_url
      *
-     * @return  self
+     * @return self
      */
     public function setBaseUrl($base_url)
     {
@@ -128,7 +128,7 @@ class Request
     /**
      * Set the value of username
      *
-     * @return  self
+     * @return self
      */
     public function setUsername($username)
     {
@@ -148,7 +148,7 @@ class Request
     /**
      * Set the value of password
      *
-     * @return  self
+     * @return self
      */
     public function setPassword($password)
     {
@@ -160,7 +160,7 @@ class Request
     /**
      * Set the value of consumer_id
      *
-     * @return  self
+     * @return self
      */
     public function setConsumerId($consumer_id)
     {
@@ -172,7 +172,7 @@ class Request
     /**
      * Set the value of user_key
      *
-     * @return  self
+     * @return self
      */
     public function setUserKey($user_key)
     {
@@ -184,7 +184,7 @@ class Request
     /**
      * Set the value of secret_key
      *
-     * @return  self
+     * @return self
      */
     public function setSecretKey($secret_key)
     {

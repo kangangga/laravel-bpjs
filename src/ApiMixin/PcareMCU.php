@@ -9,7 +9,7 @@ class PcareMCU extends BaseApi
     /**
      * Fungsi : Get Data kunjungan MCU
      *
-     * @param  string  $no_kunjungan Nomor Kunjungan
+     * @param  string  $no_kunjungan  Nomor Kunjungan
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function kunjungan($no_kunjungan)

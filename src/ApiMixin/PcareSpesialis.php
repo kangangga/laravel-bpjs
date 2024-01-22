@@ -21,7 +21,7 @@ class PcareSpesialis extends BaseApi
     /**
      * Fungsi : Get Data subspesialis
      *
-     * @param  string  $kode_spesialis Kode Spesialis
+     * @param  string  $kode_spesialis  Kode Spesialis
      * @return \Kangangga\Bpjs\Api\Response
      */
     public function subspesialis($kode_spesialis)
